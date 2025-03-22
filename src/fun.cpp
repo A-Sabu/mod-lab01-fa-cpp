@@ -43,8 +43,8 @@ unsigned int faStr2(const char *str) {
 }
 
 unsigned int faStr3(const char *str) {
-    double count = 0;
-    double sum = 0;
+    int count = 0;
+    int sum = 0;
     int i;
     bool inWord = false;
     for (i = 0; str[i] != '\0'; i++) {
@@ -58,6 +58,6 @@ unsigned int faStr3(const char *str) {
             sum++;
         }
     }
-    if (str[i] != ' ') count++;
-    return static_cast<unsigned int>(round(sum/count));
+    if (str[i-1] != ' ') count++;
+    return round(sum/count);
 }
