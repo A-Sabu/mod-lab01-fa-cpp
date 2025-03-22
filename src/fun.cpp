@@ -35,14 +35,16 @@ unsigned int faStr2(const char *str) {
                 isCorrectWord = false;
                 count++;
             }
-        } else if (!islower(str[i])) isCorrectWord = false;
+        } else if (!islower(str[i])) {
+            isCorrectWord = false;
+        }
     }
     return count;
 }
 
 unsigned int faStr3(const char *str) {
-    int count = 0;
-    int sum = 0;
+    double count = 0;
+    double sum = 0;
     int i;
     bool inWord = false;
     for (i = 0; str[i] != '\0'; i++) {
@@ -52,8 +54,10 @@ unsigned int faStr3(const char *str) {
         } else if (str[i] == ' ' && inWord) {
             count++;
             inWord = false;
-        } else if (inWord) sum++;
+        } else if (inWord) {
+            sum++;
+        }
     }
     if (str[i] != ' ') count++;
-    return round(sum/count);
+    return static_cast<unsigned int>(round(sum/count));
 }
