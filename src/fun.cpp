@@ -10,13 +10,11 @@ unsigned int faStr1(const char *str) {
     while (*str) {
         if (*str != ' ' && !inWord) {
             inWord = true;
-        }
-        else if (*str == ' ' && inWord) {
+        } else if (*str == ' ' && inWord) {
             inWord = false;
             if (findDigitInWord == true) findDigitInWord = false;
             else count++;
-        }
-        else if (std::isdigit(*str) && inWord) {
+        } else if (isdigit(*str) && inWord) {
             findDigitInWord = true;
         }
         *str++;
@@ -31,16 +29,14 @@ unsigned int faStr2(const char *str) {
     while (*str) {
         if (*str != ' ' && !inWord) {
             inWord = true;
-            if (std::isupper(*str)) isCorrectWord = true;
-        }
-        else if (*str == ' ' && inWord) {
+            if (isupper(*str)) isCorrectWord = true;
+        } else if (*str == ' ' && inWord) {
             inWord = false;
             if (isCorrectWord) {
                 isCorrectWord = false;
                 count++;
             }
-        }
-        else if (!std::islower(*str)) isCorrectWord = false;
+        } else if (!islower(*str)) isCorrectWord = false;
         *str++;
     }
     return count;
@@ -54,14 +50,12 @@ unsigned int faStr3(const char *str) {
         if (*str != ' ' && !inWord) {
             sum++;
             inWord = true;
-        }
-        else if (*str == ' ' && inWord) {
+        } else if (*str == ' ' && inWord) {
             count++;
             inWord = false;
-        }
-        else if (inWord) sum++;
+        } else if (inWord) sum++;
         *str++;
     }
     if (*str != ' ') count++;
-    return std::round(sum/count);
+    return round(sum/count);
 }
