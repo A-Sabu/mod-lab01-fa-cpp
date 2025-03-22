@@ -47,5 +47,21 @@ unsigned int faStr2(const char *str) {
 }
 
 unsigned int faStr3(const char *str) {
-    return 0;
+    int count = 0;
+    int sum = 0;
+    bool inWord = false;
+    while (*str) {
+        if (*str != ' ' && !inWord) {
+            sum++;
+            inWord = true;
+        }
+        else if (*str == ' ' && inWord) {
+            count++;
+            inWord = false;
+        }
+        else if (inWord) sum++;
+        *str++;
+    }
+    if (*str != ' ') count++;
+    return std::round(sum/count);
 }
